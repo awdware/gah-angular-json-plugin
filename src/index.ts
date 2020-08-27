@@ -1,3 +1,3 @@
-import { TemplatePlugin } from './template-plugin';
+import { AngularJsonPlugin } from './angular-json-plugin';
 
-export default TemplatePlugin;
+export default AngularJsonPlugin;

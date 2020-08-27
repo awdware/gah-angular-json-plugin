@@ -1,7 +1,7 @@
 {
-  "name": "@awdware/gah-plugin-template",
-  "version": "0.0.17",
-  "description": "Template for a new plugin for gah",
+  "name": "@awdware/gah-angular-json-plugin",
+  "version": "0.0.1-pre3",
+  "description": "Adjusts the generated angular.json file",
   "main": "./lib/index.js",
   "scripts": {
     "prebuild": "del-cli lib",
