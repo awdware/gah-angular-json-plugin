@@ -51,6 +51,8 @@ export class AngularJsonPlugin extends GahPlugin {
         } else {
           target[key] = source[key];
         }
+      } else {
+        target[key] = source[key];
       }
     }
     return target;
