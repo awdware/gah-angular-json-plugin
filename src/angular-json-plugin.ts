@@ -44,7 +44,7 @@ export class AngularJsonPlugin extends GahPlugin {
 
   private merge(target: any, source: any) {
     // Iterate through `source` properties and if an `Object` set property to merge of `target` and `source` properties
-    let replaceInsteadOfMerge = source[MERGE_REPLACEINSTEADOFMERGE] as Array<string>;
+    const replaceInsteadOfMerge = source[MERGE_REPLACEINSTEADOFMERGE] as Array<string>;
     for (const key of Object.keys(source)) {
       if (key !== MERGE_REPLACEINSTEADOFMERGE) {
         if (source[key] instanceof Object) {
