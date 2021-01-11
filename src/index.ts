@@ -1,3 +1,3 @@
-import { AngularJsonPlugin } from './angular-json-plugin';
+import { JsonConfigPlugin } from './json-config-plugin';
 
-export default AngularJsonPlugin;
+export default JsonConfigPlugin;
