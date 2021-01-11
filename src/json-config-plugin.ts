@@ -26,8 +26,8 @@ export class JsonConfigPlugin extends GahPlugin {
       const hostData = event.gahFile?.modules.find(x => x.isHost)!;
 
       this.reconfigure(hostData, 'angular.json', this.cfg.ngJson);
-      this.reconfigure(hostData, 'tsconfig.base.json', this.cfg.tfConfigJson)
-        || this.reconfigure(hostData, 'tsconfig.json', this.cfg.tfConfigJson);
+      this.reconfigure(hostData, 'tsconfig.base.json', this.cfg.tsConfigJson)
+        || this.reconfigure(hostData, 'tsconfig.json', this.cfg.tsConfigJson);
     });
   }
 
