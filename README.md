@@ -1,1 +1,1 @@
-# gah-angular-json-plugin
+# json-config-plugin for gah
