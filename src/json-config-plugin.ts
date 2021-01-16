@@ -1,4 +1,4 @@
-import { GahModuleData, GahPlugin, GahPluginConfig } from '@gah/shared';
+import { GahPlugin, GahPluginConfig } from '@gah/shared';
 
 import { PluginConfig } from './plugin-config';
 
@@ -21,37 +21,21 @@ export class JsonConfigPlugin extends GahPlugin {
 
   public onInit() {
     // Register a handler that gets called synchronously if the corresponding event occured. Some events can be called multiple times!
-    this.registerEventListener('HOST_COPIED', (event) => {
 
-      const hostData = event.gahFile?.modules.find(x => x.isHost)!;
-
-      this.reconfigure(hostData, 'angular.json', this.cfg.ngJson);
-      this.reconfigure(hostData, 'tsconfig.base.json', this.cfg.tsConfigJson)
-        || this.reconfigure(hostData, 'tsconfig.json', this.cfg.tsConfigJson);
+    this.registerEventListener('BEFORE_ADJUST_ANGULAR_JSON', (event) => {
+      this.reconfigure(event.ngJson, this.cfg.ngJson);
+    });
+    this.registerEventListener('BEFORE_ADJUST_TS_CONFIG', (event) => {
+      this.reconfigure(event.tsConfig, this.cfg.tsConfigJson);
     });
   }
 
-  private reconfigure<T>(moduleData: GahModuleData, relativeFilePath: string, config: T): boolean {
-    if (!config) {
-      this.loggerService.debug(`No configuration provided for file: ${relativeFilePath}`);
-      return false;
+  private reconfigure<T>(existingConfig: any, config?: T): boolean {
+    if (!config || !existingConfig) {
+      return true;
     }
-
-    const fullPath = this.fileSystemService.join(moduleData.basePath, relativeFilePath);
-
-    const exists = this.fileSystemService.fileExists(fullPath);
-    if (!exists) {
-      this.loggerService.debug(`Could not find configuration file: ${fullPath}`);
-      return false;
-    }
-    this.loggerService.debug(`Found config json: ${fullPath}`);
-
-    const jsonConfig = this.fileSystemService.parseFile<T>(fullPath);
-
-    const newNgJson = this.merge(jsonConfig, config);
-
-    this.fileSystemService.saveObjectToFile(fullPath, newNgJson);
-    this.loggerService.success(`JsonConfigPlugin: ${relativeFilePath} adjusted`);
+    this.merge(existingConfig, config);
+    this.loggerService.success('JsonConfigPlugin: adjusted');
     return true;
   }
 

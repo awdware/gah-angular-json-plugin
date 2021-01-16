@@ -1,8 +1,10 @@
 {
   "name": "@gah/json-config-plugin",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Adjusts the generated angular.json file",
   "main": "./lib/index.js",
+  "homepage": "https://github.com/gahjs/json-config-plugin",
+  "repository": "https://github.com/gahjs/json-config-plugin",
   "scripts": {
     "prebuild": "del-cli lib",
     "lint": "eslint src/** --fix",
@@ -13,7 +15,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@gah/shared": "^0.5.5",
+    "@gah/shared": "^0.6.0",
     "typescript": "^4.1.3"
   },
   "devDependencies": {
