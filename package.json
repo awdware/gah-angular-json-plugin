@@ -1,6 +1,6 @@
 {
   "name": "@gah/json-config-plugin",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Adjusts the generated angular.json file",
   "main": "./lib/index.js",
   "homepage": "https://github.com/gahjs/json-config-plugin",
